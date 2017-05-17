@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// This file contains two implementations:
+// This file contains two re-factor implementations to app.js:
 //
 //    - a minimal jQuery solution
 //    - the refactor to Backbone
@@ -22,7 +22,7 @@
 
 app = {
 
-  server: 'https://api.parse.com/1/classes/messages/',
+  server: '127.0.0.1/classes/messages/',
 
   init: function() {
     // Get username
@@ -121,7 +121,7 @@ app = {
 /////////////////////////////////////////////////////////////////////////////
 
 var Message = Backbone.Model.extend({
-  url: 'https://api.parse.com/1/classes/messages/',
+  url: '127.0.0.1/classes/messages/',
   defaults: {
     username: '',
     text: ''
@@ -131,7 +131,7 @@ var Message = Backbone.Model.extend({
 var Messages = Backbone.Collection.extend({
 
   model: Message,
-  url: 'https://api.parse.com/1/classes/messages/',
+  url: '127.0.0.1/classes/messages/',
 
   loadMsgs: function() {
     this.fetch({data: { order: '-createdAt' }});
